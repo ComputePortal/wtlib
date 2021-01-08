@@ -1,0 +1,7 @@
+import [wf0] from="./wf0.wtt"
+
+export template fullscreencanvas(title=null, description=null) extends=wf0 super()
+  append head
+    meta(name=viewport, content="width=device-width, initial-scale=1.0")
+
+  canvas(id=canvas, style={height: 100%, width: 100%, position: absolute})

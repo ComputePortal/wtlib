@@ -1,0 +1,5 @@
+{
+  "templateModules": {
+    "wireframes": "./wireframes/index.wtt"
+  }
+}
