@@ -1,0 +1,3 @@
+import {FlexStyle} from "./FlexStyle.wtt"
+
+export template ver(type, style={}) extends=div super(style=FlexStyle("v" + $type) + $style)

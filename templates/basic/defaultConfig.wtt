@@ -1,0 +1,75 @@
+parameters(config=path("."))
+
+import * as layout from "layout"
+
+if ($config != path("."))
+  export * from $config
+
+
+if not(issymbol(menuStyle))
+  export var menuStyle = {
+    color: grey,
+    ":hover": {
+      color: black,
+    },
+    "[selected]": {
+      color: black,
+    }
+  }
+
+
+if not(issymbol(style))
+  export var style = {
+    font-family: Arial,
+    "nav": {
+      background-color: #fff,
+      border-bottom: b := [1px, solid, #d7d8d6],
+
+      "div": {
+        flex-grow: 0.5,
+        float: right,
+      },
+
+      "div#logo": {
+        flex-grow: 1,
+        float: left,
+      },
+
+      "a": {
+        color: #818181,
+        ":hover": {
+          color: #494949
+        }
+      },
+
+      "div#verlinks": {
+        background-color: #fff,
+        border-bottom: $b,
+      }
+    },
+
+    "#articletitle": {
+      border-bottom: $b,
+    },
+  }
+
+
+if not(issymbol(navlogo))
+  export template navlogo extends=h1 super(href="index.html", style={
+    font-size: 2rem, 
+    color: #fff,
+    padding-top:0.5rem,
+    padding-bottom:0.5rem,
+    font-weight: normal,
+    font-family: monospace,
+  })
+    span(style={color: #fa6900}) "{wt" 
+    span(style={color: #0d70ca}) "suite}"
+
+
+if not(issymbol(navlinks))
+  export var navlinks = {
+    "index.html": "About",
+    "documentation.html": "Documentation",
+    "download.html": "Download",
+  }

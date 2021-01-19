@@ -1,7 +1,0 @@
-import [core] from="./core.wtt"
-
-export template wf0(title=null, description=null) extends=core super(
-  $title, 
-  $description, 
-  {height: 100%},
-)

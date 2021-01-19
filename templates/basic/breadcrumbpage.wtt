@@ -1,0 +1,32 @@
+parameters(config)
+
+import {page}($config) from "./page.wtt"
+import * as layout from "layout"
+
+export function BreadcrumbStyle() {
+  layout.FlexStyle(hlc) + {
+    justify-content: space-between,
+    background-color: #fff,
+  }
+}
+
+// breadcrumb is a dictionary of url -> visible text
+export template breadcrumbpage (
+  title=null, 
+  description=null, 
+  breadcrumb=null,
+  style={}
+) extends=page super($title, $description, bodyStyle=$style)
+
+  if ($breadcrumb != null)
+    div(id=breadcrumb, style=BreadcrumbStyle())
+      layout.contentdiv
+        layout.hor(lc)
+          var n = len($breadcrumb)
+          for i in=seq($n)
+            var v = items($breadcrumb)[$i]
+            a(href=v[0]) 
+              print v[1]
+
+            //if ($i < $n - 1)
+            p "/"

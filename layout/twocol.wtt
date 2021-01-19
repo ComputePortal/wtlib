@@ -1,0 +1,17 @@
+import {GridStyle} from "./GridStyle.wtt"
+
+template col(start, end, minScreenWidth) extends=div super(style={
+  grid-column-start: 1,
+  grid-column-end: 3,
+  "@min-screen-width " + str($minScreenWidth): {
+    grid-column-start: $start,
+    grid-column-end: $end,
+  }
+})
+
+export template twocol(gutter=1rem, minScreenWidth=700px, gridTemplateColumns=[1fr, 1fr]) extends=div super(style=GridStyle($gutter, $gridTemplateColumns))
+  col(1, 2, $minScreenWidth)
+    block first
+
+  col(2, 3, $minScreenWidth)
+    block second

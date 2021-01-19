@@ -1,0 +1,5 @@
+parameters(config=path("./defaultConfig.wtt"))
+
+export {landingpage}($config) from "./landingpage.wtt"
+export {breadcrumbpage}($config) from "./breadcrumbpage.wtt"
+export {articlepage}($config) from "./articlepage.wtt"

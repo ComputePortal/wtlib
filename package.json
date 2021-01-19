@@ -1,5 +1,7 @@
 {
   "templateModules": {
-    "wireframes": "./wireframes/index.wtt"
+    "icons": "./icons/index.wtt",
+    "layout": "./layout/index.wtt",
+    "templates/basic": "./templates/basic/index.wtt"
   }
 }

@@ -1,0 +1,115 @@
+parameters(config)
+
+import {
+  style as userStyle, 
+  navlogo as userlogo, 
+  navlinks as userLinks,
+  menuStyle
+}($config) from "./defaultConfig.wtt"
+
+import * as icons from "icons"
+import * as layout from "layout"
+
+
+var defaultHTMLStyle = {height: 100%}
+var defaultBodyStyle = $defaultHTMLStyle
+
+// the mobileWidth is only used for the hamburger menu
+var mobileWidth = float(200 + len($userLinks)*150, px)
+
+template links extends=dummy super() 
+  for v in=items($userLinks)
+    div(class=link)
+      a(href=v[0])
+        print v[1]
+
+
+function BodyStyle(style) {
+  {
+    width: 100%,
+    position: relative,
+    height: 100%,
+    display: flex,
+    flex-direction: column,
+  } + $style
+}
+
+export template page(
+  title=null, 
+  description=null, 
+  bodyStyle=$defaultBodyStyle,
+) extends=html super(style=$defaultHTMLStyle)
+  head
+    if ($title != null)
+      title
+        print $title
+
+    if ($description != null)
+      meta(name=description, content=$description)
+    meta(charset="utf-8")
+
+    block head
+
+  body(style=BodyStyle($userStyle + $bodyStyle))
+    nav
+      layout.contentdiv
+        layout.hor(sc)
+          div(id=logo)
+            userlogo
+
+          layout.hor(lc, id!=horlinks, style={
+            display: none,
+            "@min-screen-width " + str($mobileWidth): {
+              display: flex,
+            }
+          })
+            links
+
+          icons.div(menu, 3rem, style={
+            "@min-screen-width " + str($mobileWidth): {
+              display: none,
+            },
+            ":hover": {
+              cursor: pointer,
+            },
+            position: relative,
+            right: -0.5rem,
+          } + $menuStyle, id!=menu-button)
+          script("let c=document.getElementById('verlinks');let b=document.getElementById('menu-button');b.addEventListener('click', ()=>{if(b.getAttribute('selected')===null){c.setAttribute('show','');b.setAttribute('selected','')}else{c.removeAttribute('show');b.removeAttribute('selected')}})")
+
+      div(style={position: relative, bottom: 0, left: 0, 
+        "@min-screen-width " + str($mobileWidth): {
+          display: none,
+        },
+      })
+        div(id!=verlinks, style={
+          display: none,
+          position: absolute,
+          left: 0,
+          right: 0,
+          top: 0,
+          z-index: 100,
+          "[show]": {
+            display: block,
+          }
+        })
+          layout.contentdiv(200px)
+            div(style=layout.FlexStyle(vlc))
+              links
+    
+    div(style={flex: [1,0,auto]})
+      block default
+
+    // sticky footer
+    footer(style={flex-shrink: 0})
+      layout.contentdiv
+        layout.hor(sc)
+          layout.hor(lc)
+            block footer-left
+
+          layout.hor(cc)
+            block footer-middle
+
+          layout.hor(rc)
+            block footer-right
+              print year()

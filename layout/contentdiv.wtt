@@ -1,0 +1,15 @@
+export function ContentDivStyle(maxWidth) {
+  {
+    width: "calc(100% - 2rem)",
+    max-width: $maxWidth,
+    margin-right: auto,
+    margin-left: auto,
+    position: relative,
+    padding-left: 1rem, // this is the minimum
+    padding-right: 1rem,
+  }
+}
+
+export template contentdiv(maxWidth=1400px, style={}) extends=div super(style=
+  ContentDivStyle($maxWidth) + $style
+)

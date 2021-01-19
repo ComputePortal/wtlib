@@ -1,0 +1,10 @@
+parameters(extension=null)
+
+// default factory
+export {iconfactory as factory}($extension) from "./factory.wtt"
+
+export {icondiv as div, IconBGImage, IconStyle}($extension) from "./icondiv.wtt"
+
+export {mdi-icon} from "./mdi-icon.wtt"
+
+export {allIconNames} from "./allIconNames.wtt"

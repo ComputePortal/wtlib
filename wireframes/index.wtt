@@ -1,3 +1,0 @@
-export [wf0] from="./wf0.wtt"
-
-export [fullscreencanvas] from="./fullscreencanvas.wtt"

@@ -1,0 +1,8 @@
+parameters(config)
+
+import {page}($config) from "./page.wtt"
+
+export template landingpage(title=null, description=null) extends=page super(
+  $title, 
+  $description, 
+)
