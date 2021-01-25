@@ -2,6 +2,15 @@
   "templateModules": {
     "icons": "./icons/index.wtt",
     "layout": "./layout/index.wtt",
-    "templates/basic": "./templates/basic/index.wtt"
+    "templates/basic": "./templates/basic/index.wtt",
+    "ux": "./ux/index.wtt"
+  },
+  "scriptModules": {
+    "easing": "./easing/index.wts",
+    "linalg": "./linalg/index.wts",
+    "ux": "./ux/index.wts"
+  },
+  "shaderModules": {
+    "colors": "./colors/index.glsl"
   }
 }

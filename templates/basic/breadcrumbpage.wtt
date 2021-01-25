@@ -16,7 +16,7 @@ export template breadcrumbpage (
   description=null, 
   breadcrumb=null,
   style={}
-) extends=page super($title, $description, bodyStyle=$style)
+) extends=page super($title, $description, style=$style)
 
   if ($breadcrumb != null)
     div(id=breadcrumb, style=BreadcrumbStyle())

@@ -1,0 +1,342 @@
+// exported easing functions:
+// * Linear
+// * Ease[In|Out|InOut][Sine|Quad|Cubic|Quart|Quint|Expo|Circ|Back|Elastic]
+
+// constructor(duration Number)
+
+
+// we dont use an enum because 'in' is a keyword
+const IN = 0; // starts slow and accelerates
+const OUT = 1; // starts fast and decelerates
+const IN_OUT = 2; // starts slow, accelerates, and finally decelerates. the motion is symmetric back to front
+
+
+export interface Easing {
+  // output goes from 0 to 1 (and clamps if time is out of bounds
+  map(time Number) Number; // time doesn't need to be relative
+  interp(time Number, y0 Number, y1 Number) Number;
+  get duration() Number;
+}
+
+
+abstract class AbstractEasing {
+  _duration Number;
+  _type Int;
+
+  abstract mapInternal(x Number) Number; // x: 0..1, y: 0..1
+
+  // duration in milliseconds if input time is also in milliseconds
+  constructor(duration Number, type Int) {
+    this._duration = duration;
+    this._type = type;
+  }
+
+  get duration() Number {
+    return this._duration;
+  }
+
+  // time is relative to 0.0
+  map(time Number) Number {
+    t := time/this._duration;
+    let f;
+    if (t < 0.0) {
+      f = 0.0;
+    } else if (t > 1.0) {
+      f = 1.0;
+    } else {
+      switch(this._type) {
+        case IN:
+          f = this.mapInternal(t);
+          break;
+        case OUT:
+          f = 1.0 - this.mapInternal(1.0 - t);
+          break;
+        case IN_OUT:
+          // TODO: are these correct?
+          if (t < 0.5) {
+            f = 0.5*this.mapInternal(2.0*t);
+          } else {
+            f = 1.0 - 0.5*this.mapInternal(2.0*(1.0 - t));
+          }
+          break;
+        default:
+          throw new Error("unhandled Easing type");
+          break;
+      }
+    }
+
+    return f;
+  }
+
+  interp(time Number, y0 Number, y1 Number) Number {
+    f := this.map(time);
+    return y0*(1.0 - f) + y1*f;
+  }
+}
+
+
+export class Linear extends AbstractEasing {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+
+  mapInternal(x Number) Number {
+    return x;
+  }
+}
+
+class EaseSine extends AbstractEasing {
+  mapInternal(x Number) Number {
+    return 1.0 - Math.cos((x *Math.PI)*0.5);
+  }
+}
+
+
+export class EaseInSine extends EaseSine {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutSine extends EaseSine {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutSine extends EaseSine {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
+
+
+abstract class EasePoly extends AbstractEasing {
+  abstract get p() Number;
+
+  mapInternal(x Number) Number {
+    return Math.pow(x, this.p);
+  }
+}
+
+
+class EaseQuad extends EasePoly {
+  get p() Number {return 2.0}
+}
+
+
+export class EaseInQuad extends EaseQuad {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutQuad extends EaseQuad {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutQuad extends EaseQuad {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
+
+
+class EaseCubic extends EasePoly {
+  get p() Number {return 3.0}
+}
+
+
+export class EaseInCubic extends EaseCubic {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutCubic extends EaseCubic {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutCubic extends EaseCubic {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
+
+
+class EaseQuart extends EasePoly {
+  get p() Number {return 4.0}
+}
+
+
+export class EaseInQuart extends EaseQuart {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutQuart extends EaseQuart {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutQuart extends EaseQuart {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
+
+
+class EaseQuint extends EasePoly {
+  get p() Number {return 5.0}
+}
+
+
+export class EaseInQuint extends EaseQuint {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutQuint extends EaseQuint {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutQuint extends EaseQuint {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
+
+
+class EaseExpo extends AbstractEasing {
+  mapInternal(x Number) Number {
+    return Math.pow(2.0, 10.0*x - 10.0);
+  }
+}
+
+
+export class EaseInExpo extends EaseExpo {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutExpo extends EaseExpo {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutExpo extends EaseExpo {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
+
+
+class EaseCirc extends AbstractEasing {
+  mapInternal(x Number) Number {
+    return 1.0 - Math.sqrt(1.0 - x*x);
+  }
+}
+
+
+export class EaseInCirc extends EaseCirc {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutCirc extends EaseCirc {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutCirc extends EaseCirc {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
+
+
+class EaseBack extends AbstractEasing {
+  mapInternal(x Number) Number {
+    const c2 = 1.70158;
+    const c3 = c2 + 1.0;
+    return c3*x*x*x - c2*x*x;
+  }
+}
+
+
+export class EaseInBack extends EaseBack {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutBack extends EaseBack {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutBack extends EaseBack {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
+
+
+class EaseElastic extends AbstractEasing {
+  mapInternal(x Number) Number {
+    const c = (2.0 * Math.PI)/3.0;
+
+    return -Math.pow(2.0, 10.0*x - 10.0)*Math.sin((x*10.0 - 10.75)*c);
+  }
+}
+
+
+export class EaseInElastic extends EaseElastic {
+  constructor(duration Number) {
+    super(duration, IN);
+  }
+}
+
+
+export class EaseOutElastic extends EaseElastic {
+  constructor(duration Number) {
+    super(duration, OUT);
+  }
+}
+
+
+export class EaseInOutElastic extends EaseElastic {
+  constructor(duration Number) {
+    super(duration, IN_OUT);
+  }
+}
