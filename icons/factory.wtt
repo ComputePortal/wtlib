@@ -2,7 +2,7 @@ parameters(extension)
 
 import *($extension) from "./mdi-icon.wtt"
 
-export template iconfactory(icon, height, href=null, style={}) extends=dummy super()
+export template iconfactory(icon, height, href=null, style={}) extends dummy super()
   var iconName=ifelse(isstring($icon), $icon, icon[0])
   var iconScale=ifelse(isstring($icon), null, icon[1])
 
@@ -16,14 +16,14 @@ export template iconfactory(icon, height, href=null, style={}) extends=dummy sup
 
   if issymbol($iconName)
     // from extension
-    template icontemplate extends=$iconName super(scale=$iconScale, style!= $iconStyle, href!= $href)
+    template icontemplate extends $iconName super(scale=$iconScale, style!= $iconStyle, href!= $href)
 
     icontemplate
   else
     // try default mdi-icon
     import {icon as iconbase} from path("./mdi/" + $iconName + ".wtt")
 
-    template iconwrapped extends=mdi-icon super(scale=$iconScale, style!=$iconStyle, href!=$href)
+    template iconwrapped extends mdi-icon super(scale=$iconScale, style!=$iconStyle, href!=$href)
       iconbase
 
     iconwrapped

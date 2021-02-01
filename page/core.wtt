@@ -2,11 +2,10 @@ export template core(
   title=null, 
   description=null, 
   bodyStyle={height: 100%},
-) extends=html super(style={height: 100%})
+) extends html super(style={height: 100%})
   head
     if ($title != null)
-      title
-        print $title
+      title $title
 
     if ($description != null)
       meta(name=description, content=$description)

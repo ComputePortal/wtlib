@@ -3,12 +3,12 @@ import * as icons from "icons"
 
 // simple full screen width, centered, carousel
 // without selection buttons
-export template carousel(id, gutter=1rem, maxWidth=1400px, style={}) extends=layout.hor super(
+export template carousel(id, gutter=1rem, maxWidth=1400px, style={}) extends layout.hor super(
   lc, style={
     position: relative,
     width: $maxWidth,
-    ($smallScreen := "@max-screen-width " + str($maxWidth + 2*$gutter)): {
-      width: ($fullWidth := "calc(100vw - " + str(2*$gutter) + ")"),
+    (smallScreen := "@max-screen-width " + str($maxWidth + 2*$gutter)): {
+      width: (fullWidth := "calc(100vw - " + str(2*$gutter) + ")"),
     },
     overflow-x: visible,
   }

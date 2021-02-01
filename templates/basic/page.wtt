@@ -16,11 +16,10 @@ var defaultHTMLStyle = {height: 100%}
 // the mobileWidth is only used for the hamburger menu
 var mobileWidth = float(200 + len($userLinks)*150, px)
 
-template links extends=dummy super() 
-  for v in=items($userLinks)
+template links extends dummy super() 
+  for v in items($userLinks)
     div(class=link)
-      a(href=v[0])
-        print v[1]
+      a(href=v[0]) $v[1]
 
 
 function BodyStyle(style) {
@@ -37,11 +36,10 @@ export template page(
   title=null, 
   description=null, 
   style={},
-) extends=html super(style=$defaultHTMLStyle)
+) extends html super(style=$defaultHTMLStyle)
   head
     if ($title != null)
-      title
-        print $title
+      title $title
 
     if ($description != null)
       meta(name=description, content=$description)

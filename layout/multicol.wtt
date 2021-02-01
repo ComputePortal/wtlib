@@ -13,7 +13,7 @@ export function MultiColStyle(rowHeight, minHeight, screenWidths, nChildren) {
   }
 }
 
-export template multicol(rowHeight, screenWidths, minHeight=0rem, style={}) extends=div super(
+export template multicol(rowHeight, screenWidths, minHeight=0rem, style={}) extends div super(
   style=MultiColStyle($rowHeight, $minHeight, $screenWidths, $__nchildren__) + $style
 )
   

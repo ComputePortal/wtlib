@@ -3,25 +3,22 @@ parameters(config)
 import * as layout from "layout"
 import {breadcrumbpage}($config) from "./breadcrumbpage.wtt"
 
-template prevnext(prev, next, id) extends=layout.contentdiv super(class!=prev-next, id!=$id)
+template prevnext(prev, next, id) extends layout.contentdiv super(class!=prev-next, id!=$id)
   layout.hor($prev != null ? sc : rc)
     if ($prev != null) 
       p "Prev: " 
-        a(href=$prev[0]) 
-          print $prev[1]
+        a(href=$prev[0]) $prev[1]
 
     if ($next != null) 
       p "Next: " 
-        a(href=$next[0]) 
-          print $next[1]
+        a(href=$next[0]) $next[1]
 
-export template articlepage(title=null, description=null, breadcrumb=null, prev=null, next=null, style={}) extends=breadcrumbpage super($title, $description, $breadcrumb, style=$style)
+export template articlepage(title=null, description=null, breadcrumb=null, prev=null, next=null, style={}) extends breadcrumbpage super($title, $description, $breadcrumb, style=$style)
   if ($title != null)
     layout.hor(lb, id!=articletitle)
       layout.contentdiv
         layout.hor(sc)
-          h1 
-            print $title
+          h1 $title
           div(style={float: right})
             block category
 

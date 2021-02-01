@@ -1,5 +1,5 @@
 import {FlexStyle} from "./FlexStyle.wtt"
 
-export template hor(type, style={}) extends=div super(style=FlexStyle("h" + $type) + $style)
+export template hor(type, style={}) extends div super(style=FlexStyle("h" + $type) + $style)
 
-export template ver(type, style={}) extends=div super(style=FlexStyle("v" + $type) + $style)
+export template ver(type, style={}) extends div super(style=FlexStyle("v" + $type) + $style)

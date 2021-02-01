@@ -16,17 +16,16 @@ export template breadcrumbpage (
   description=null, 
   breadcrumb=null,
   style={}
-) extends=page super($title, $description, style=$style)
+) extends page super($title, $description, style=$style)
 
   if ($breadcrumb != null)
     div(id=breadcrumb, style=BreadcrumbStyle())
       layout.contentdiv
         layout.hor(lc)
           var n = len($breadcrumb)
-          for i in=seq($n)
+          for i in seq($n)
             var v = items($breadcrumb)[$i]
-            a(href=v[0]) 
-              print v[1]
+            a(href=v[0]) $v[1]
 
             //if ($i < $n - 1)
             p "/"

@@ -1,7 +1,7 @@
 import [core] from="./core.wtt"
 
 // a centered version of wf0 in case of wide screens
-export template wf1(title=null, description=null) extends=core super(
+export template wf1(title=null, description=null) extends core super(
   $title, 
   $description,
   {

@@ -2,7 +2,7 @@ parameters(config)
 
 import {page}($config) from "./page.wtt"
 
-export template landingpage(title=null, description=null, style={}) extends=page super(
+export template landingpage(title=null, description=null, style={}) extends page super(
   $title, 
   $description, 
   style=$style,

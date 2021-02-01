@@ -55,7 +55,7 @@ if not(issymbol(style))
 
 
 if not(issymbol(navlogo))
-  export template navlogo extends=h1 super(href="index.html", style={
+  export template navlogo extends h1 super(href="index.html", style={
     font-size: 2rem, 
     color: #fff,
     padding-top:0.5rem,

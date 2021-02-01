@@ -31,7 +31,7 @@ export function IconStyle(icon, height, defaultColor, hoverColor = null, selecte
 }
 
 // the svg is actually a background image
-export template icondiv(icon, height, style={}) extends=div super(
+export template icondiv(icon, height, style={}) extends div super(
   style=IconStyle(
     $icon, 
     $height, 

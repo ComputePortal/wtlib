@@ -1,6 +1,6 @@
 import [empty] from="./empty.wtt"
 
-export template fullscreencanvas(title=null, description=null) extends=empty super()
+export template fullscreencanvas(title=null, description=null) extends empty super()
   append head
     meta(name=viewport, content="width=device-width, initial-scale=1.0")
 

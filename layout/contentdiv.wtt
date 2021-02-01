@@ -10,6 +10,6 @@ export function ContentDivStyle(maxWidth) {
   }
 }
 
-export template contentdiv(maxWidth=1400px, style={}) extends=div super(style=
+export template contentdiv(maxWidth=1400px, style={}) extends div super(style=
   ContentDivStyle($maxWidth) + $style
 )

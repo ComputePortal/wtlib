@@ -4,7 +4,7 @@ parameters(extension=null)
 if ($extension != null)
   export * from $extension
 
-export template mdi-icon(scale=null) extends=svg super(viewBox="0 0 24 24")
+export template mdi-icon(scale=null) extends svg super(viewBox="0 0 24 24")
   if not(isnull($scale))
     g(transform=str(["translate(12,12) scale(", $scale, ",", $scale, ") translate(-12,-12)"]))
       block default
