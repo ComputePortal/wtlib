@@ -33,7 +33,7 @@ function selectVerStyle(x, y) {
 }
 
 // align : hcc (example)
-export function FlexStyle(align) {
+export function flex(align) {
   hvxy := list($align);
   hv := $hvxy[0]; // 'h' or 'v'
   x := $hvxy[1]; // 'l', 'c' or 'r'

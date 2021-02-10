@@ -1,4 +1,4 @@
-export function GridStyle(gutter, columns=12, nested=true) {
+export function grid(gutter, columns=12, nested=true) {
   {
     display: grid,
     grid-column-gap: $gutter,

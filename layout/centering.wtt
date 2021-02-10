@@ -1,4 +1,4 @@
-export function ContentDivStyle(maxWidth) {
+export function centering(maxWidth=1400px, gutter=1rem) {
   {
     width: "calc(100% - 2rem)",
     max-width: $maxWidth,
@@ -9,7 +9,3 @@ export function ContentDivStyle(maxWidth) {
     padding-right: 1rem,
   }
 }
-
-export template contentdiv(maxWidth=1400px, style={}) extends div super(style=
-  ContentDivStyle($maxWidth) + $style
-)

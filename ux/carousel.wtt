@@ -1,62 +1,7 @@
-import * as layout from "layout"
-import * as icons from "icons"
+export template carousel(id) extends div super(class=carousel)
+  button(class=carousel-left, id=$id + "-left")
 
-// simple full screen width, centered, carousel
-// without selection buttons
-export template carousel(id, gutter=1rem, maxWidth=1400px, style={}) extends layout.hor super(
-  lc, style={
-    position: relative,
-    width: $maxWidth,
-    (smallScreen := "@max-screen-width " + str($maxWidth + 2*$gutter)): {
-      width: (fullWidth := "calc(100vw - " + str(2*$gutter) + ")"),
-    },
-    overflow-x: visible,
-  }
-)
-  var leftRightButtonStyle = {
-    cursor: pointer,
-    position: absolute,
-    color: #cccccc33,
-      ":hover": { color: #cccccc88, }
-  }
+  button(class=carousel-right, id=$id + "-right")
 
-  icons.div(arrow-left-drop-circle-outline, 3rem, style= $leftRightButtonStyle + {
-    left: 1rem,
-    z-index: 10000,
-    top: 50%,
-    margin-top: -1.5rem,
-  }, id!=$id + "-left")
-
-  icons.div(arrow-right-drop-circle-outline, 3rem, style= $leftRightButtonStyle + {
-    right: 1rem,
-    z-index: 10000,
-    top: 50%,
-    margin-top: -1.5rem,
-  }, id!=$id + "-right")
-
-  layout.hor(lc, style={
-    position: relative,
-    width: $maxWidth,
-    $smallScreen: {
-      width: $fullWidth,
-    },
-    overflow-x: visible,
-    "> *": {
-      position: relative,
-      min-width: $maxWidth,
-      max-width: $maxWidth,
-      $smallScreen: {
-        min-width: $fullWidth,
-        max-width: $fullWidth,
-      },
-      margin-left: $gutter,
-      margin-right: $gutter,
-      ":first-child": {
-        margin-left: 0rem,
-      },
-      ":last-child": {
-        margin-right: 0rem,
-      },
-    }
-  } + $style, id!=$id)
+  div(class=carousel-inner, id=$id)
     block default

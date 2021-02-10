@@ -1,3 +1,0 @@
-export [empty] from="./empty.wtt"
-
-export [fullscreencanvas] from="./fullscreencanvas.wtt"

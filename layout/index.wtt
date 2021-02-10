@@ -1,8 +1,3 @@
-export {FlexStyle} from "./FlexStyle.wtt"
-export {contentdiv, ContentDivStyle} from "./contentdiv.wtt"
-
-export {hor} from "./hor.wtt"
-export {ver} from "./ver.wtt"
-
-export {multicol, MultiColStyle} from "./multicol.wtt"
-export {twocol} from "./twocol.wtt"
+export {flex} from "./flex.wtt"
+export {grid} from "./grid.wtt"
+export {centering} from "./centering.wtt"

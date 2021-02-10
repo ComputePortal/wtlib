@@ -1,5 +1,0 @@
-import [wf1] from="./wf1.wtt"
-
-wf1
-  //div(style={position: absolute, width: 100%, height: 100%, background-color: #efefef})
-  h1 "Lorem ipsum"
