@@ -2,7 +2,6 @@
   "templateModules": {
     "icons": "./icons/index.wtt",
     "layout": "./layout/index.wtt",
-    "templates/basic": "./templates/basic/index.wtt",
     "ux": "./ux/index.wtt"
   },
   "scriptModules": {
