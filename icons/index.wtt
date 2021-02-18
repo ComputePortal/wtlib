@@ -3,7 +3,7 @@ parameters(extension=null)
 // default factory
 export {iconfactory as factory}($extension) from "./factory.wtt"
 
-export {IconBGImage}($extension) from "./IconBGImage.wtt"
+export {bgImageURI}($extension) from "./bgImage.wtt"
 
 export {mdi-icon} from "./mdi-icon.wtt"
 
