@@ -1,0 +1,39 @@
+export class LiveChatClient {
+  _url String; // api route
+  _messages HTMLElement;
+  _input HTMLInputElement;
+  _submit HTMLElement;
+
+  constructor(url String) {
+    this._url = url;
+    this._messages = document.getElementById("livechat-messages");
+    this._input = cast(document.getElementById("livechat-input"), HTMLInputElement);
+    this._submit = document.getElementById("livechat-submit");
+    
+    this._input.addEventListener("input", (_) => {
+      this.changeInputState();
+    });
+
+    this._submit.addEventListener("click", (_) => {
+      this.submitMessage();
+    });
+
+    this.changeInputState();
+  }
+
+  private changeInputState() {
+    if (this._input.value == "") {
+      this._submit.setAttribute("disabled", "");
+    } else {
+      this._submit.removeAttribute("disabled");
+    }
+  }
+
+  private submitMessage() {
+    if (this._submit.getAttribute("disabled") == null) {
+      str := this._input.value;
+
+      console.log("about to submit: ", str);
+    }
+  }
+}

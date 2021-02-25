@@ -1,0 +1,7 @@
+export {SearchIndex} from "./SearchIndex.wts";
+
+export {PageScore} from "./PageScore.wts";
+
+export {searchPages} from "./searchPages.wts";
+
+export {sanitizeQuery, highlightQuery} from "./ops.wts";

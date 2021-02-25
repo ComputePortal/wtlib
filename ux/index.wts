@@ -1,1 +1,3 @@
-export {Carousel} from "./Carousel.wts"
+export {Carousel} from "./Carousel.wts";
+export {LiveChatClient} from "./livechat/index.wts";
+

@@ -1,0 +1,7 @@
+// the basic internal tags of a live chat widget
+// we can use id's because there should only be one livechat per page
+export template livechatexpanded extends div super(id=livechat-wrapper)
+  div(id=livechat-messages)
+  div(class=form)
+    input(id=livechat-input, type=text)
+    button(id=livechat-submit) "Submit"
